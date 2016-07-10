@@ -12,8 +12,8 @@
 	<description>Hello jOOQ</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.7</java.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -41,10 +41,6 @@
 	
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<groupId>org.jooq</groupId>
 				<artifactId>jooq-codegen-maven</artifactId>
@@ -83,13 +79,37 @@
 					</generator>
 				</configuration>
 			</plugin>
+
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<systemProperties>
+						<systemProperty>
+							<key>jdbc.driver</key>
+							<value>${jdbc.driver}</value>
+						</systemProperty>
+						<systemProperty>
+							<key>jdbc.user</key>
+							<value>${jdbc.user}</value>
+						</systemProperty>
+						<systemProperty>
+							<key>jdbc.password</key>
+							<value>${jdbc.password}</value>
+						</systemProperty>
+						<systemProperty>
+							<key>jdbc.url</key>
+							<value>${jdbc.url}</value>
+						</systemProperty>
+					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>

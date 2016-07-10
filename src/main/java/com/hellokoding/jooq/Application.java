@@ -12,17 +12,16 @@ import java.sql.DriverManager;
 import static com.hellokoding.jooq.model.Tables.*;
 
 public class Application {
-    public static void main(final String...args) throws Exception {
-        String userName = "hellokoding";
-        String password = "hellokoding";
-        String url = "jdbc:mysql://localhost:3306/library?serverTimezone=UTC";
+    public static void main(String[] args) throws Exception {
+        String user = System.getProperty("jdbc.user");
+        String password = System.getProperty("jdbc.password");
+        String url = System.getProperty("jdbc.url");
+        String driver = System.getProperty("jdbc.driver");
 
-        // Connection is the only JDBC resource that we need
-        // PreparedStatement and ResultSet are handled by jOOQ, internally
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        try (Connection conn = DriverManager.getConnection(url, userName, password)) {
-            DSLContext create = DSL.using(conn, SQLDialect.MYSQL);
-            Result<Record> result = create.select().from(AUTHOR).fetch();
+        Class.forName(driver).newInstance();
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            DSLContext dslContext = DSL.using(connection, SQLDialect.MYSQL);
+            Result<Record> result = dslContext.select().from(AUTHOR).fetch();
 
             for (Record r : result) {
                 Integer id = r.getValue(AUTHOR.ID);
@@ -32,8 +31,6 @@ public class Application {
                 System.out.println("ID: " + id + " first name: " + firstName + " last name: " + lastName);
             }
         }
-
-        // For the sake of this tutorial, let's keep exception handling simple
         catch (Exception e) {
             e.printStackTrace();
         }
