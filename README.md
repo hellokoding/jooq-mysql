@@ -14,4 +14,4 @@ https://hellokoding.com/hello-jooq-mysql/
 - MySQL
 
 ## Run
-`mvn clean compile exec:java -Dexec.mainClass=com.hellokoding.jooq.Application`
+`mvn clean compile exec:java -Dexec.mainClass=com.hellokoding.jooq.Application -Dexec.cleanupDaemonThreads=false`
