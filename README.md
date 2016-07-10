@@ -1,18 +1,17 @@
-# JPA Many-To-Many Relationship Example with Spring Boot, Maven, and MySQL
+# Hello jOOQ Example with MySQL
 
 ## Guide
-https://hellokoding.com/jpa-many-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/
+https://hellokoding.com/hello-jooq-mysql/
 
 ## Prerequisites
-- JDK 1.8 or later
+- JDK 1.7 or later
 - Maven 3 or later
 - MySQL 5.6 or later
 
 ## Stack
-- Spring Data JPA
-- Spring Boot
+- Java
+- jOOQ
 - MySQL
 
 ## Run
-`mvn spring-boot:run`
-
+`mvn clean compile exec:java -Dexec.mainClass=com.hellokoding.jooq.Application`
