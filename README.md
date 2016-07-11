@@ -1,7 +1,7 @@
 # jOOQ Example with MySQL
 
 ## Guide
-https://hellokoding.com/hello-jooq-mysql/
+https://hellokoding.com/jooq-example-with-mysql/
 
 ## What you'll need
 - JDK 1.7 or later
