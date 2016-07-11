@@ -1,4 +1,4 @@
-# Hello jOOQ Example with MySQL
+# jOOQ Example with MySQL
 
 ## Guide
 https://hellokoding.com/hello-jooq-mysql/
